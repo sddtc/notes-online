@@ -13,7 +13,7 @@ async function getNotes() {
 
 async function putNote(newNote) {
     const record = { note: newNote, creator: "anonymous" }
-    await supabase.from("notes-online").insert(record);
+    await supabase.from("notes-online").insert(record, { returning: "minimal" });
 
     console.log("put note successfully.")
 }
