@@ -1,5 +1,5 @@
 import { beforeEach, describe, it, vi, expect } from "vitest";
-import notesService from "../src/services/notesService";
+import notesService from "../../src/services/notesService";
 
 const mockSelectFunction = vi.fn();
 const mockInsertFunction = vi.fn();
@@ -18,7 +18,7 @@ const { supabaseMockClient } = vi.hoisted(() => {
             }))
         }
     }
-})
+});
 
 vi.mock('@supabase/supabase-js', () => ({
     createClient: vi.fn(() => supabaseMockClient),
