@@ -38,6 +38,7 @@ export default [
     },
     rules: {
       //rules here
+      'indent': ['error', 2],
     },
   },
 ];

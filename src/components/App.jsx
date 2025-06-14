@@ -6,57 +6,57 @@ import CreateArea from "./CreateArea";
 import notesService from "../services/notesService"
 
 function App() {
-    const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
 
-    useEffect(() => {
-        async function fetchData() {
-            const allNotes = await notesService.getNotes();
-            if (allNotes.length > 0) {
-                setNotes(allNotes)
-            }
-        }
-        fetchData();
-    }, [])
-
-    function addNote(newNote) {
-        setNotes(prevNotes => {
-            return [...prevNotes, newNote.content];
-        });
-
-        notesService.putNote(newNote.content);
+  useEffect(() => {
+    async function fetchData() {
+      const allNotes = await notesService.getNotes();
+      if (allNotes.length > 0) {
+        setNotes(allNotes)
+      }
     }
+    fetchData();
+  }, [])
 
-    function deleteNote(id) {
-        const note = notes.filter((noteItem, index) => {
-            return index == id
-        })[0];
+  function addNote(newNote) {
+    setNotes(prevNotes => {
+      return [...prevNotes, newNote.content];
+    });
 
-        setNotes(prevNotes => {
-            return prevNotes.filter((noteItem, index) => {
-                return index !== id;
-            });
-        });
+    notesService.putNote(newNote.content);
+  }
 
-        notesService.deleteNote(note);
-    }
+  function deleteNote(id) {
+    const note = notes.filter((noteItem, index) => {
+      return index == id
+    })[0];
 
-    return (
-        <div>
-            <Header />
-            <CreateArea onAdd={addNote} />
-            {notes.map((noteItem, index) => {
-                return (
-                    <Note
-                        key={index}
-                        id={index}
-                        content={noteItem}
-                        onDelete={deleteNote}
-                    />
-                );
-            })}
-            <Footer />
-        </div>
-    );
+    setNotes(prevNotes => {
+      return prevNotes.filter((noteItem, index) => {
+        return index !== id;
+      });
+    });
+
+    notesService.deleteNote(note);
+  }
+
+  return (
+    <div>
+      <Header />
+      <CreateArea onAdd={addNote} />
+      {notes.map((noteItem, index) => {
+        return (
+          <Note
+            key={index}
+            id={index}
+            content={noteItem}
+            onDelete={deleteNote}
+          />
+        );
+      })}
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

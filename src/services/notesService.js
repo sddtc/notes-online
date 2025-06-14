@@ -7,22 +7,22 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 const notesOnlineTable = 'notes-online';
 
 async function getNotes() {
-    const { data, error } = await supabase.from(notesOnlineTable).select('note');
+  const { data, error } = await supabase.from(notesOnlineTable).select('note');
 
-    if (error) {
-        return []
-    }
+  if (error) {
+    return []
+  }
 
-    return data.map(d => d.note);
+  return data.map(d => d.note);
 }
 
 async function putNote(newNote) {
-    const record = { note: newNote, creator: "anonymous" }
-    await supabase.from(notesOnlineTable).insert(record, { returning: 'minimal' });
+  const record = { note: newNote, creator: "anonymous" }
+  await supabase.from(notesOnlineTable).insert(record, { returning: 'minimal' });
 }
 
 async function deleteNote(note) {
-    await supabase.from(notesOnlineTable).delete().eq('note', note);
+  await supabase.from(notesOnlineTable).delete().eq('note', note);
 }
 
 export default { getNotes, putNote, deleteNote };
