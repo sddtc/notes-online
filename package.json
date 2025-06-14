@@ -8,6 +8,7 @@
     "scripts": {
         "dev": "vite dev",
         "build": "vite build",
+        "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
         "lintFix": "eslint . --report-unused-disable-directives --max-warnings 0 --fix",
         "test": "vitest",
         "coverage": "vitest run --coverage"
