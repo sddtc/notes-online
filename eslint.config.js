@@ -1,8 +1,8 @@
-import react from "eslint-plugin-react";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import typescriptParser from "@typescript-eslint/parser";
-import globals from "globals";
-import reactRecommended from "eslint-plugin-react/configs/recommended.js";
+import react from "eslint-plugin-react"
+import typescriptEslint from "@typescript-eslint/eslint-plugin"
+import typescriptParser from "@typescript-eslint/parser"
+import globals from "globals"
+import reactRecommended from "eslint-plugin-react/configs/recommended.js"
 
 export default [
   {
@@ -39,6 +39,7 @@ export default [
     rules: {
       //rules here
       'indent': ['error', 2],
+      "semi": ["error", "never"],
     },
   },
-];
+]

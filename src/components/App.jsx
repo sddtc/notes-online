@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import Note from "./Note";
-import CreateArea from "./CreateArea";
+import React, { useEffect, useState } from "react"
+import Header from "./Header"
+import Footer from "./Footer"
+import Note from "./Note"
+import CreateArea from "./CreateArea"
 import notesService from "../services/notesService"
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      const allNotes = await notesService.getNotes();
+      const allNotes = await notesService.getNotes()
       if (allNotes.length > 0) {
         setNotes(allNotes)
       }
     }
-    fetchData();
+    fetchData()
   }, [])
 
   function addNote(newNote) {
     setNotes(prevNotes => {
-      return [...prevNotes, newNote.content];
-    });
+      return [...prevNotes, newNote.content]
+    })
 
-    notesService.putNote(newNote.content);
+    notesService.putNote(newNote.content)
   }
 
   function deleteNote(id) {
     const note = notes.filter((noteItem, index) => {
       return index == id
-    })[0];
+    })[0]
 
     setNotes(prevNotes => {
       return prevNotes.filter((noteItem, index) => {
-        return index !== id;
-      });
-    });
+        return index !== id
+      })
+    })
 
-    notesService.deleteNote(note);
+    notesService.deleteNote(note)
   }
 
   return (
@@ -52,11 +52,11 @@ function App() {
             content={noteItem}
             onDelete={deleteNote}
           />
-        );
+        )
       })}
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

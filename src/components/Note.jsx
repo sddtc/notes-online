@@ -1,19 +1,19 @@
-import React from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React from "react"
+import DeleteIcon from "@mui/icons-material/Delete"
 
 function Note(props) {
   function handleClick() {
-    props.onDelete(props.id);
+    props.onDelete(props.id)
   }
 
   return (
     <div className="note">
       <p>{props.content}</p>
-      <button onClick={handleClick}>
+      <button onClick={handleClick} data-testid="delete-note">
         <DeleteIcon />
       </button>
     </div>
-  );
+  )
 }
 
-export default Note;
+export default Note

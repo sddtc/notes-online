@@ -4,7 +4,7 @@ import Header from "../../src/components/Header"
 
 describe("render header", () => {
   it("should render title successfully", () => {
-    render(<Header />);
+    render(<Header />)
     expect(screen.getByText("Notes online")).toBeInTheDocument()
-  });
+  })
 })
