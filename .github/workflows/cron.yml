@@ -1,11 +1,12 @@
 name: cron job
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '30 1,13 * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
-  test_schedule:
+  test-schedule:
     runs-on: ubuntu-latest
     steps:
       - name: hi
