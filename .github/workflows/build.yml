@@ -1,0 +1,23 @@
+name: lint check and test
+on:
+  push:
+    branches: 
+      - main
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-check-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - run: npm i
+      - run: npm run lint
+      - run: npm run coverage
