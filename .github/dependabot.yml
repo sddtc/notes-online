@@ -1,3 +1,5 @@
+name: dependabot updates
+
 version: 2
 updates:
   - package-ecosystem: "npm"
