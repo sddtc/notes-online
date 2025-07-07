@@ -9,12 +9,12 @@ jobs:
   get_openapi_output:
     runs-on: ubuntu-latest
     outputs:
-      openapi_content: ${{ steps.get_content.outputs }}
+      openapi_content: ${{ steps.get_content.outputs.result }}
     steps:
       - id: get_content
         name: get content from online open api
         run: |
-          curl "https://v2.jinrishici.com/one.json" | jq ".data.content" || echo $? >> "$GITHUB_OUTPUT"
+          curl "https://v2.jinrishici.com/one.json" | jq ".data.content" || echo result=$? >> "$GITHUB_OUTPUT"
   auto_create_notes:
     runs-on: ubuntu-latest
     needs: get_openapi_output
