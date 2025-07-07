@@ -6,8 +6,18 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
+  get_openapi_output:
+    runs-on: ubuntu-latest
+    outputs:
+      openapi_content: ${{ steps.get_content.outputs }}
+    steps:
+      - id: get_content
+        name: get content from online open api
+        run: |
+          curl "https://v2.jinrishici.com/one.json" | jq ".data.content" || echo $? >> "$GITHUB_OUTPUT"
   auto_create_notes:
     runs-on: ubuntu-latest
+    needs: get_openapi_output
     steps:
       - name: curl api to create default notes
         env:
@@ -19,4 +29,4 @@ jobs:
           --header "Apikey: $SUPABASE_APIKEY" \
           --header 'Content-Type: application/json' \
           --header 'User-Agent: sddtc-client' \
-          --data '{"note":"你好👋","creator":"anonymous"}'
+          --data '{"note":"${{ needs.get_openapi_output.outputs.openapi_content }}","creator":"anonymous"}'
