@@ -30,4 +30,4 @@ jobs:
           --header "Apikey: $SUPABASE_APIKEY" \
           --header 'Content-Type: application/json' \
           --header 'User-Agent: sddtc-client' \
-          --data '{"note":"${{ needs.get_openapi_output.outputs.openapi_content }}","creator":"anonymous"}'
+          --data '{"note":${{ needs.get_openapi_output.outputs.openapi_content }},"creator":"anonymous"}'
