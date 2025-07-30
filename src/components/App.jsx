@@ -45,16 +45,16 @@ function App() {
       <Header />
       <CreateArea onAdd={addNote} />
       <div className="notes">
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            content={noteItem}
-            onDelete={deleteNote}
-          />
-        )
-      })}
+        {notes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              content={noteItem}
+              onDelete={deleteNote}
+            />
+          )
+        })}
       </div>
       <Footer />
     </div>
