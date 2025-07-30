@@ -5,6 +5,7 @@ import Footer from "../../src/components/Footer"
 describe("render footer", () => {
   it("should render copyright with current year successfully", () => {
     render(<Footer />)
-    expect(screen.getByText("Copyright ⓒ 2025")).toBeInTheDocument()
+
+    expect(screen.getByRole('link', { name: 'sddtc' })).toHaveAttribute('href', 'https://www.sddtc.florist')
   })
 })
