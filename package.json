@@ -18,7 +18,7 @@
         "@emotion/styled": "11.14.1",
         "@mui/icons-material": "7.3.0",
         "@mui/material": "7.3.1",
-        "@supabase/supabase-js": "^2.53.0",
+        "@supabase/supabase-js": "^2.53.1",
         "react": "19.1.1",
         "react-dom": "19.1.1"
     },
