@@ -1,0 +1,16 @@
+name: auto merge dependant bot pr
+
+on:
+  pull_request_target:
+    branches:
+        - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    name: Auto Merge Dependabot PRs
+    uses: sddtc/shared-actions/.github/workflows/auto-merge-pr.yml@main
+    secrets: inherit
